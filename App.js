@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import AppLoading from 'expo-app-loading'
-import { Container, Header, Root, Text, Button } from 'native-base';
-import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
-import Topbar from './components/Topbar'
+import { Container, Header, Root, Text, Button, Form } from 'native-base';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import  NormalScreen  from './screens/NormalScreen';
+import BlindScreen from './screens/BlindScreen';
+import LoadingScreen from './screens/LoadingScreen';
 
 export default App = () => {
   
-  const [isReady , setIsReady] = useState(false);
-
-  useEffect(() => {
-    Font.loadAsync({
-      Roboto: require('native-base/Fonts/Roboto.ttf'),
-      Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-      ...Ionicons.font,
-    });
-    setIsReady(true);
-  },[])
+  const Stack = createStackNavigator();
 
   return (
-    <Root>
-      <Topbar/>
-    </Root>
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false
+        }}
+      >
+        <Stack.Screen name="Loading" component={LoadingScreen}/>
+        <Stack.Screen name="Normal" component={NormalScreen} />
+        <Stack.Screen name="Special" component={BlindScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
