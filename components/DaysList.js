@@ -4,14 +4,14 @@ import { View, Text } from 'react-native'
 import { useState } from 'react/cjs/react.development'
 import DaysListItem from './DaysListItem'
 
-export default DaysList = ({daysList}) => {
-    //console.log(daysList[5].clouds)
-    const elo = daysList.map((el) =>
-        <DaysListItem day={el} />
+export default DaysList = ({daysList, onClickDetailsDay}) => {
+
+    const list = daysList.map((el, key) =>
+        <DaysListItem day={el} key={key} onClickDetailsDay={onClickDetailsDay}/>
     )
     return (
         <List>
-            {elo}
+            {list}
         </List>
     )
 }

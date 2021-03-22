@@ -16,12 +16,13 @@ export default TempetureView = ({current}) => {
 
     return (
         <View style={styles.container}>
-            <Text>{weekDay[new Date(current.dt * 1000).getDay()]}</Text>
+            <Text>{weekDay[new Date(current.dt * 1000).getDay()]}
             <Image 
                 style={{height: 30, width: 30}}  
                 source={{ uri: `http://openweathermap.org/img/wn/${current.weather[0].icon}@4x.png`}}
                 >
             </Image>
+            </Text>
             <Text style={styles.text}>{current.temp} &#8451;</Text>
         </View>
     )
@@ -33,7 +34,6 @@ const styles = StyleSheet.create({
     },
     container: {
         alignItems: 'center',
-        height: '20%',
-        marginTop: 20,
-    }
+        margin: 40,
+    },
 })

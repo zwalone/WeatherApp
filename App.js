@@ -3,9 +3,10 @@ import { Container, Header, Root, Text, Button, Form } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import  NormalScreen  from './screens/NormalScreen';
+import NormalScreen  from './screens/NormalScreen';
 import BlindScreen from './screens/BlindScreen';
 import LoadingScreen from './screens/LoadingScreen';
+import DetailsDaysScreen from './screens/DetailsDaysScreen'
 
 export default App = () => {
   
@@ -21,6 +22,7 @@ export default App = () => {
         <Stack.Screen name="Loading" component={LoadingScreen}/>
         <Stack.Screen name="Normal" component={NormalScreen} />
         <Stack.Screen name="Special" component={BlindScreen} />
+        <Stack.Screen name="Details" component={DetailsDaysScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

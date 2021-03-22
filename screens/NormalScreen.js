@@ -1,23 +1,21 @@
-import { Button, Container, Content, Header } from 'native-base'
+import { Container, Content, Text } from 'native-base'
 import React, {useState, useEffect} from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { StyleSheet } from 'react-native'
 import Topbar from '../components/Topbar'
 import TempetureView from '../components/TempetureView'
 import {API_KEY} from '../api'
 import DetailsWeather from '../components/DetailsWeather'
 import DaysList from '../components/DaysList'
-import { ScrollView } from 'react-native-gesture-handler'
+import HoursTempetureList from '../components/HoursTempetureList'
 
 export default NormalScreen = ({route , navigation}) => {
     
     const [data, setData] = useState({});
     const {latitude, longitude} = route.params;
     const [callIsRady, setCallIsReady] = useState(false)
-    const [img, setImage] = useState();
-                {/* <Image style={{height: 30, width: 30}} source={{ uri: 'http://openweathermap.org/img/wn/10d@2x.png'}}></Image> */}
+    const [isDetails, setIsDetails] = useState();
 
-    //http://api.openweathermap.org/data/2.5/onecall?lat=50.3040529&lon=18.7712646&appid=b9dea802d9b46dee015637bafb9076a6&units=metric
-    //https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric
+    //TODO move this to loading screen =====!++++++++++!=====
     useEffect(() => {
       console.log(latitude, longitude,API_KEY)
       fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
@@ -30,13 +28,24 @@ export default NormalScreen = ({route , navigation}) => {
         .catch(err => console.log(err))
     },[])
 
+    const onClickDetailsDay = (day) => {
+        console.log("clouds",day.clouds)
+        navigation.navigate('Details', {
+            screen: 'DetailsDaysScreen',
+            params: {
+                day: day,
+            }
+        })
+    }
+
     return (
         <Container>
             <Topbar/>
             <Content style={styles.content}>
                 {callIsRady ? <TempetureView current={data.current}/> : null}
-                {callIsRady ? <DetailsWeather/> : null}
-                {callIsRady ? <DaysList daysList={data.daily}></DaysList> : null}
+                {callIsRady ? <HoursTempetureList hourly={data.hourly}/> : null}
+                {callIsRady ? <DetailsWeather day={data.current}/> : null}
+                {callIsRady ? <DaysList daysList={data.daily} onClickDetailsDay={onClickDetailsDay}></DaysList> : null}
             </Content>
         </Container>
     )
@@ -45,7 +54,8 @@ export default NormalScreen = ({route , navigation}) => {
 const styles = StyleSheet.create({
     content: {
         flex: 1,
-        padding: 24,
+        paddingLeft: 24,
+        paddingRight: 24,
     },
 
 })
