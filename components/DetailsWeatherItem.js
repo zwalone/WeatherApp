@@ -17,11 +17,10 @@ export default DatailsWeatherItem = ({name , value, icon}) => {
 const style = StyleSheet.create({
     item: {
         padding: 20,
-        marginRight: 5,
-        marginBottom: 5,
+        height: 100,
+        margin: 10,
         width: 100,
-        backgroundColor: 'blue',
-        borderWidth: 4,
+        borderWidth: 2,
         borderRadius: 6,
         justifyContent: 'center',
         alignItems: 'center',
@@ -37,5 +36,5 @@ const style = StyleSheet.create({
     value: {
         fontSize: 16,
         fontWeight: 'bold',
-    }
+    },
 })

@@ -33,17 +33,17 @@ export default DetailsWeather = ({day}) => {
     return (
         <View style={style.container}> 
             <Grid>
-                <Row style={style.col}>
+                <Row >
                     <DetailsWeatherItem name={"humidity"} value={day.humidity} icon={"water-outline"}/>
                     <DetailsWeatherItem name={"sunrise"} value={getTime(day.sunrise)} icon={"weather-sunset-up"}/>
                     <DetailsWeatherItem name={"sunset"} value={getTime(day.sunset)} icon={"weather-sunset-down"}/>
                 </Row>
-                <Row style={style.col}>
+                <Row >
                     <DetailsWeatherItem name={"pressure"} value={day.pressure} icon={"speedometer"}/>
                     <DetailsWeatherItem name={"clouds"} value={day.clouds} icon={"weather-cloudy"}/>
                     <DetailsWeatherItem name={"visibility"} value={day.visibility} icon={"eye"}/>
                 </Row>
-                <Row style={style.col}>
+                <Row >
                     <DetailsWeatherItem name={"wind speed"} value={day.wind_speed} icon={"weather-windy"}/>
                     <DetailsWeatherItem name={"wind deg"} value={day.wind_deg} icon={"axis-z-rotate-clockwise"}/>
                     <DetailsWeatherItem name={"wind gust"} value={day.wind_gust} icon={"chevron-triple-up"}/>

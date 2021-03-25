@@ -7,7 +7,7 @@ export default DetailsListTempItem = ({name, value, icon}) => {
     return (
         <ListItem icon>
             <Left>
-                <Button style={{backgroundColor: "#FF9501"}}>
+                <Button >
                     <MaterialCommunityIcons name={icon} size={24} color="white" />
                 </Button>
             </Left>

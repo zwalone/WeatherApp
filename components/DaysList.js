@@ -1,4 +1,4 @@
-import { List } from 'native-base'
+import { Body, Left, List, Right, Separator } from 'native-base'
 import React from 'react'
 import { View, Text } from 'react-native'
 import { useState } from 'react/cjs/react.development'
@@ -10,7 +10,10 @@ export default DaysList = ({daysList, onClickDetailsDay}) => {
         <DaysListItem day={el} key={key} onClickDetailsDay={onClickDetailsDay}/>
     )
     return (
-        <List>
+        <List icon>
+            <Separator bordered>
+                    <Text>Tempeture Day / Night</Text>
+            </Separator>
             {list}
         </List>
     )

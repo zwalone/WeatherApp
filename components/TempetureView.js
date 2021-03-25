@@ -1,17 +1,17 @@
-import { Container, Content, H1, Icon, Text, View } from 'native-base';
+import { Button, Container, Content, H1, Icon, Text, View } from 'native-base';
 import React from 'react';
 import { StyleSheet, Image } from 'react-native';
 
-export default TempetureView = ({current}) => {
+export default TempetureView = ({current, cityText, onClickChangeView}) => {
 
     const weekDay ={
-        0: "Monday",
-        1: "Tuesday",
-        2: "Wednesday",
-        3: "Thursday",
-        4: "Friday",
-        5: "Saturday",
-        6: "Sunday",
+        0: "Sunday",
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday",
+        6: "Saturday",
     }
 
     return (
@@ -24,6 +24,11 @@ export default TempetureView = ({current}) => {
             </Image>
             </Text>
             <Text style={styles.text}>{current.temp} &#8451;</Text>
+            <Text >{cityText}</Text>
+
+            <View>
+                <Button rounded onPress={() => onClickChangeView()}><Text>Change</Text></Button>
+            </View>
         </View>
     )
 }

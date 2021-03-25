@@ -1,4 +1,4 @@
-import { Body, Icon, Left, ListItem, Right } from 'native-base'
+import { Body, Button, Icon, Left, ListItem, Right } from 'native-base'
 import React from 'react'
 import { View, Text,Image } from 'react-native'
 
@@ -15,14 +15,17 @@ export default DaysListItem = ({day, onClickDetailsDay}) => {
 
     return (
         //on press go to details
-        <ListItem onPress={() => onClickDetailsDay(day)}>
+        <ListItem icon onPress={() => onClickDetailsDay(day)}>
             <Left>
-                <Image 
-                    style={{height: 20, width: 30}}  
-                    source={{ uri: `http://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png`}}
-                    >
-                </Image>
-                <Text>{day.temp.day} &#8451; </Text>
+                <Button>
+                    <Image 
+                        style={{height: 20, width: 30}}  
+                        source={{ uri: `http://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png`}}
+                        >
+                    </Image>
+                </Button>
+
+                <Text>  {day.temp.day} &#8451; </Text>
             </Left>
             <Body>
                 <Text>{weekDay[new Date(day.dt * 1000).getDay()]}</Text>
