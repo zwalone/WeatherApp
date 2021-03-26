@@ -29,7 +29,7 @@ export default LoadingScreen = ({navigation}) => {
         return;
       }
 
-      let loc = await Location.getCurrentPositionAsync({});
+      let loc = await Location.getCurrentPositionAsync({ accuracy: 6 });
       setLocation(loc);
       setLocalizationIsReady(true);
     })();
