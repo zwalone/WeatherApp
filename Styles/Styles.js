@@ -200,8 +200,6 @@ export const blind = StyleSheet.create({
     //DetailsScreen
     DSContent: {
         flex: 1,
-        paddingLeft: 24,
-        paddingRight: 24,
     },
     DSText: {
         fontSize: 36,
