@@ -1,6 +1,6 @@
-import { Container, Content, Text, Toast, View } from 'native-base'
+import { Container, Content, Toast} from 'native-base'
 import React, {useState, useEffect} from 'react'
-import { ImageBackground, ImageBackgroundComponent, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import Topbar from '../components/Topbar'
 import TempetureView from '../components/TempetureView'
 import {API_KEY, API_KEY_City} from '../api'
@@ -16,12 +16,9 @@ export default NormalScreen = ({route , navigation}) => {
     const {latitude, longitude} = route.params;
     const [cords, setCords] = useState({});
     const [callIsRady, setCallIsReady] = useState(false);
-    const [isDetails, setIsDetails] = useState();
     const [cityName, setCityName] = useState("");
     const [cityText, setCityText] = useState("");
-    //const style = normal;
 
-    //TODO move this to loading screen =====!++++++++++!=====
     useEffect(() => {
       fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
         .then(res => res.json())
@@ -89,8 +86,7 @@ export default NormalScreen = ({route , navigation}) => {
             <Topbar styles={normal} handler={changeNameHandler}/>
                 <LinearGradient
                     colors={['#182848', '#4b6cb7' ]}
-                    style={back.background}
-                    >
+                    style={back.background}>
                 <Content style={normal.ScreenContent}>
                         {callIsRady ? <TempetureView styles={normal} onClickChangeView={onClickChangeView} cityText={cityText} current={data.current}/> : null}
                         {callIsRady ? <HoursTempetureList styles={normal} hourly={data.hourly}/> : null}

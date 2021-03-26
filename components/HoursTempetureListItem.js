@@ -1,6 +1,6 @@
 import { ListItem } from 'native-base'
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image } from 'react-native'
 
 export default HoursTempetureListItem = ({hour, styles}) => {
 

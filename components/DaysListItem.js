@@ -1,4 +1,4 @@
-import { Body, Button, Icon, Left, ListItem, Right } from 'native-base'
+import { Body, Button, Left, ListItem} from 'native-base'
 import React from 'react'
 import { View, Text,Image } from 'react-native'
 

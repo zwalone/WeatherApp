@@ -1,10 +1,7 @@
-import { Col, Grid, Row } from 'native-base'
+import { Grid, Row } from 'native-base'
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { View } from 'react-native'
 import DetailsWeatherItem from './DetailsWeatherItem'
-
-//Add details with icons name
 
 export default DetailsWeather = ({day, styles}) => {
 

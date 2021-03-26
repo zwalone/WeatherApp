@@ -1,8 +1,7 @@
 import { Container, Content } from 'native-base'
 import React from 'react'
-import { View, Text , StyleSheet, Image} from 'react-native'
+import { View, Text , StyleSheet } from 'react-native'
 import DetailsWeatherShort from '../components/DetailsWeatherShort'
-import TempetureView from '../components/TempetureView'
 import DetailsListTemp from '../components/DetailsListTemp'
 import {LinearGradient} from 'expo-linear-gradient'
 

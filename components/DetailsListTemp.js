@@ -1,6 +1,6 @@
 import { List,Separator } from 'native-base'
 import React from 'react'
-import { View, Text } from 'react-native'
+import {  Text } from 'react-native'
 import DetailsListTempItem from './DetailsListTempItem'
 
 export default DetailsListTemp = ({temp, fells_like, styles}) => {

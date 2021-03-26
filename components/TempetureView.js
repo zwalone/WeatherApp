@@ -1,6 +1,6 @@
-import { Button, Container, Content, H1, Icon, Text, View } from 'native-base';
+import { Button, Text, View } from 'native-base';
 import React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { Image } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
 export default TempetureView = ({current, cityText, onClickChangeView, styles}) => {

@@ -1,6 +1,6 @@
 import { Container, Content, Spinner } from 'native-base'
 import React, {useEffect, useState} from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import * as Location from 'expo-location';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -45,7 +45,6 @@ export default LoadingScreen = ({navigation}) => {
             longitude: location.coords.longitude,
         }},],
       });
-    
   }
 
     return (

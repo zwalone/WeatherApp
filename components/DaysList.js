@@ -1,7 +1,6 @@
-import { Body, Left, List, Right, Separator } from 'native-base'
+import { List, Separator } from 'native-base'
 import React from 'react'
-import { View, Text } from 'react-native'
-import { useState } from 'react/cjs/react.development'
+import { Text } from 'react-native'
 import DaysListItem from './DaysListItem'
 
 export default DaysList = ({daysList, onClickDetailsDay, styles}) => {

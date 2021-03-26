@@ -1,6 +1,6 @@
 import { List } from 'native-base'
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import HoursTempetureListItem from './HoursTempetureListItem'
 
 export default HoursTempetureList = ({hourly, styles}) => {

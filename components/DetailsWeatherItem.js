@@ -1,6 +1,5 @@
-import { Icon } from 'native-base'
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text} from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default DatailsWeatherItem = ({name , value, icon, styles}) => {

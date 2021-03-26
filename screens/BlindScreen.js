@@ -14,7 +14,6 @@ export default BlindScreen = ({route, navigation}) => {
 
     const [data, setData] = useState(route.params.params.data);
     const [cords, setCords] = useState({});
-    const [isDetails, setIsDetails] = useState();
     const [cityName, setCityName] = useState("");
     const [cityText, setCityText] = useState("");
 
