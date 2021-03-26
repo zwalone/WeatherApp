@@ -2,7 +2,7 @@ import { ListItem } from 'native-base'
 import React from 'react'
 import { View, Text, Image, StyleSheet } from 'react-native'
 
-export default HoursTempetureListItem = ({hour}) => {
+export default HoursTempetureListItem = ({hour, styles}) => {
 
     const getTime = (dt) =>{
         var date = new Date(dt * 1000);
@@ -19,27 +19,18 @@ export default HoursTempetureListItem = ({hour}) => {
     return (
         <ListItem>
             <View>
-                <Text style={style.text}>{getTime(hour.dt)}</Text>
+                <Text style={styles.HoursItemText}>{getTime(hour.dt)}</Text>
                 <Image 
-                    style={{height: 50, width: 50}}  
+                    style={styles.HoursItemIcon}  
                     source={{ uri: `http://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png` }}
                     >
                 </Image>
-                <Text>{hour.temp} &#8451;</Text>
+                <Text style={styles.HoursItemText}>{hour.temp.toFixed()} &#8451;</Text>
             </View>
         </ListItem>
     )
 }
 
-const style = StyleSheet.create({
-    text: {
-        textAlign: 'center'
-    },
-    weatherIcon:
-    {
-        width: 50,
-        height: 50,
-    }
-})
+
 
 

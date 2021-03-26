@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import { Button, Header, Icon, Input, Item, Text } from 'native-base'
 
-export default Topbar = ({handler}) => {
+export default Topbar = ({handler, styles}) => {
 
     const [cityName, setCityName] = useState("")
 
     return (
-        <Header searchBar rounded>
+        <Header style={styles.TopBar} searchBar rounded>
             <Item>
                 <Icon name='search'/>
                 <Input placeholder='City'

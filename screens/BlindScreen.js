@@ -4,9 +4,11 @@ import { StyleSheet } from 'react-native'
 import Topbar from '../components/Topbar'
 import TempetureView from '../components/TempetureView'
 import {API_KEY, API_KEY_City} from '../api'
-import DetailsWeather from '../components/DetailsWeather'
+import DetailsWeather from '../components/DetailsWeatherShort'
 import DaysList from '../components/DaysList'
 import HoursTempetureList from '../components/HoursTempetureList'
+import { blind } from '../Styles/Styles'
+import {LinearGradient} from 'expo-linear-gradient'
 
 export default BlindScreen = ({route, navigation}) => {
 
@@ -52,6 +54,9 @@ export default BlindScreen = ({route, navigation}) => {
             screen: 'DetailsDaysScreen',
             params: {
                 day: day,
+                styles: blind,
+                cityName: cityName,
+                colors: ['#acb6e5', '#86fde8' ],
             }
         })
     }
@@ -67,22 +72,24 @@ export default BlindScreen = ({route, navigation}) => {
 
     return (
         <Container>
-            <Topbar handler={changeNameHandler}/>
-            <Content style={styles.content}>
-                <TempetureView onClickChangeView={onClickChangeView} cityText={cityText} current={data.current}/> 
-                <HoursTempetureList hourly={data.hourly}/> 
-                <DetailsWeather day={data.current}/> 
-                <DaysList daysList={data.daily} onClickDetailsDay={onClickDetailsDay}></DaysList> 
+            <Topbar styles={blind} handler={changeNameHandler}/>
+            <LinearGradient
+                    colors={['#acb6e5', '#86fde8' ]}
+                    style={back.background}
+                    >
+            <Content style={blind.ScreenContent}>
+                <TempetureView styles={blind} onClickChangeView={onClickChangeView} cityText={cityText} current={data.current}/> 
+                <HoursTempetureList styles={blind} hourly={data.hourly}/> 
+                <DetailsWeather styles={blind} day={data.current}/> 
+                <DaysList styles={blind} daysList={data.daily} onClickDetailsDay={onClickDetailsDay}></DaysList> 
             </Content>
+            </LinearGradient>
         </Container>
     )
 }
 
-const styles = StyleSheet.create({
-    content: {
+const back = StyleSheet.create({
+    background: {
         flex: 1,
-        paddingLeft: 24,
-        paddingRight: 24,
-    },
-
+      },
 })

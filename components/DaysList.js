@@ -4,15 +4,15 @@ import { View, Text } from 'react-native'
 import { useState } from 'react/cjs/react.development'
 import DaysListItem from './DaysListItem'
 
-export default DaysList = ({daysList, onClickDetailsDay}) => {
+export default DaysList = ({daysList, onClickDetailsDay, styles}) => {
 
     const list = daysList.map((el, key) =>
-        <DaysListItem day={el} key={key} onClickDetailsDay={onClickDetailsDay}/>
+        <DaysListItem styles={styles} day={el} key={key} onClickDetailsDay={onClickDetailsDay}/>
     )
     return (
         <List icon>
-            <Separator bordered>
-                    <Text>Tempeture Day / Night</Text>
+            <Separator style={styles.DLTitle}>
+                    <Text style={styles.DLTitle}>Tempeture Day / Night</Text>
             </Separator>
             {list}
         </List>

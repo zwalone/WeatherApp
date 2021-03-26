@@ -3,38 +3,12 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-export default DatailsWeatherItem = ({name , value, icon}) => {
+export default DatailsWeatherItem = ({name , value, icon, styles}) => {
     return (
-        <View style={style.item}>
-            <Text style={style.title}>{name}</Text>
-            {/* <Icon style={style.icon} name="weather-sunset-up"></Icon> */}
-            <MaterialCommunityIcons style={style.icon} name={icon} size={50} color="black" />
-            <Text style={style.value}>{value}</Text>
+        <View style={styles.DetailItem}>
+            <MaterialCommunityIcons style={styles.DetailIcon} name={icon} size={50} color="black" />
+            <Text style={styles.DetailTitle}>{name}</Text>
+            <Text style={styles.DetailValue}>{value}</Text>
         </View>
     )
 }
-
-const style = StyleSheet.create({
-    item: {
-        padding: 20,
-        height: 100,
-        margin: 10,
-        width: 100,
-        borderWidth: 2,
-        borderRadius: 6,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    icon: { 
-        position: 'absolute',
-        opacity: 0.1,
-        zIndex: -3,
-    },
-    title: {
-        fontSize: 12,
-    },
-    value: {
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-})

@@ -1,12 +1,14 @@
-import { Container, Content, Text, Toast } from 'native-base'
+import { Container, Content, Text, Toast, View } from 'native-base'
 import React, {useState, useEffect} from 'react'
-import { StyleSheet } from 'react-native'
+import { ImageBackground, ImageBackgroundComponent, StyleSheet } from 'react-native'
 import Topbar from '../components/Topbar'
 import TempetureView from '../components/TempetureView'
 import {API_KEY, API_KEY_City} from '../api'
 import DetailsWeather from '../components/DetailsWeather'
 import DaysList from '../components/DaysList'
 import HoursTempetureList from '../components/HoursTempetureList'
+import { normal } from '../Styles/Styles'
+import {LinearGradient} from 'expo-linear-gradient'
 
 export default NormalScreen = ({route , navigation}) => {
     
@@ -17,6 +19,7 @@ export default NormalScreen = ({route , navigation}) => {
     const [isDetails, setIsDetails] = useState();
     const [cityName, setCityName] = useState("");
     const [cityText, setCityText] = useState("");
+    //const style = normal;
 
     //TODO move this to loading screen =====!++++++++++!=====
     useEffect(() => {
@@ -60,11 +63,14 @@ export default NormalScreen = ({route , navigation}) => {
         setCityName(val)
     }
 
-      const onClickDetailsDay = (day) => {
+    const onClickDetailsDay = (day) => {
         navigation.navigate('Details', {
             screen: 'DetailsDaysScreen',
             params: {
                 day: day,
+                styles: normal,
+                cityName: cityName,
+                colors: ['#182848', '#4b6cb7' ],
             }
         })
     }
@@ -80,22 +86,24 @@ export default NormalScreen = ({route , navigation}) => {
 
     return (
         <Container>
-            <Topbar handler={changeNameHandler}/>
-            <Content style={styles.content}>
-                {callIsRady ? <TempetureView onClickChangeView={onClickChangeView} cityText={cityText} current={data.current}/> : null}
-                {callIsRady ? <HoursTempetureList hourly={data.hourly}/> : null}
-                {callIsRady ? <DetailsWeather day={data.current}/> : null}
-                {callIsRady ? <DaysList daysList={data.daily} onClickDetailsDay={onClickDetailsDay}></DaysList> : null}
-            </Content>
+            <Topbar styles={normal} handler={changeNameHandler}/>
+                <LinearGradient
+                    colors={['#182848', '#4b6cb7' ]}
+                    style={back.background}
+                    >
+                <Content style={normal.ScreenContent}>
+                        {callIsRady ? <TempetureView styles={normal} onClickChangeView={onClickChangeView} cityText={cityText} current={data.current}/> : null}
+                        {callIsRady ? <HoursTempetureList styles={normal} hourly={data.hourly}/> : null}
+                        {callIsRady ? <DetailsWeather styles={normal} day={data.current}/> : null}
+                        {callIsRady ? <DaysList styles={normal} daysList={data.daily} onClickDetailsDay={onClickDetailsDay}></DaysList> : null}
+                </Content>
+            </LinearGradient>
         </Container>
     )
 }
 
-const styles = StyleSheet.create({
-    content: {
+const back = StyleSheet.create({
+    background: {
         flex: 1,
-        paddingLeft: 24,
-        paddingRight: 24,
-    },
-
+      },
 })

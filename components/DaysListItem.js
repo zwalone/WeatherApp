@@ -2,7 +2,7 @@ import { Body, Button, Icon, Left, ListItem, Right } from 'native-base'
 import React from 'react'
 import { View, Text,Image } from 'react-native'
 
-export default DaysListItem = ({day, onClickDetailsDay}) => {
+export default DaysListItem = ({day, onClickDetailsDay, styles}) => {
 
     const weekDay ={
     0: "Monday",
@@ -15,23 +15,25 @@ export default DaysListItem = ({day, onClickDetailsDay}) => {
 
     return (
         //on press go to details
-        <ListItem icon onPress={() => onClickDetailsDay(day)}>
+        <ListItem icon  onPress={() => onClickDetailsDay(day)}>
             <Left>
                 <Button>
                     <Image 
-                        style={{height: 20, width: 30}}  
+                        style={{height: 30, width: 30}}  
                         source={{ uri: `http://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png`}}
                         >
                     </Image>
                 </Button>
 
-                <Text>  {day.temp.day} &#8451; </Text>
+                <Text style={styles.DLText}>  {day.temp.day.toFixed()} &#8451; </Text>
             </Left>
-            <Body>
-                <Text>{weekDay[new Date(day.dt * 1000).getDay()]}</Text>
+            <Body >
+                <View style={{alignItems: 'center'}}>
+                <Text style={styles.DLText}>{weekDay[new Date(day.dt * 1000).getDay()]}</Text>
+                </View>
             </Body>
             <Left>
-                <Text>{day.temp.night} &#8451;</Text>
+                <Text style={styles.DLText}>{day.temp.night.toFixed()} &#8451;</Text>
             </Left>
         </ListItem>
     )

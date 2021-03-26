@@ -3,7 +3,7 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default DetailsListTempItem = ({name, value, icon}) => {
+export default DetailsListTempItem = ({name, value, icon, styles}) => {
     return (
         <ListItem icon>
             <Left>
@@ -12,10 +12,10 @@ export default DetailsListTempItem = ({name, value, icon}) => {
                 </Button>
             </Left>
             <Body>
-                <Text>{name}</Text>
+                <Text style={styles.DLText}>{name}</Text>
             </Body>
             <Right>
-                <Text>{value} &#8451;</Text>
+                <Text style={styles.DLText}>{value.toFixed()} &#8451;</Text>
             </Right>
         </ListItem>
     )

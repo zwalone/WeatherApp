@@ -4,11 +4,11 @@ import { View, Text , StyleSheet, Image} from 'react-native'
 import DetailsWeatherShort from '../components/DetailsWeatherShort'
 import TempetureView from '../components/TempetureView'
 import DetailsListTemp from '../components/DetailsListTemp'
+import {LinearGradient} from 'expo-linear-gradient'
 
 export default DetailsDaysScreen = ({route , navigation}) => {
 
-    const {day} = route.params.params
-    console.log("DAY TEMP========" , day.temp)
+    const {day, styles, colors, cityName} = route.params.params
     const weekDay ={
         0: "Monday",
         1: "Tuesday",
@@ -21,29 +21,24 @@ export default DetailsDaysScreen = ({route , navigation}) => {
 
     return (
         <Container>
-            <Content style={styles.content}>
-                <View style={styles.container}>
-                    <Text style={styles.text}>{weekDay[new Date(day.dt * 1000).getDay()]}</Text>
+            <LinearGradient
+                colors={[colors[0], colors[1]]}
+                style={back.background}
+                >
+            <Content style={styles.DSContent}>
+                <View style={styles.DSContainer}>
+                    <Text style={styles.DSText}>{weekDay[new Date(day.dt * 1000).getDay()]}</Text>
+                    <Text style={styles.TempViewTextSmall}>{cityName}</Text>
                 </View>
-
-                <DetailsWeatherShort day={day}/>
-                <DetailsListTemp temp={day.temp} fells_like={day.feels_like}></DetailsListTemp>
+                <DetailsWeatherShort styles={styles} day={day}/>
+                <DetailsListTemp styles={styles} temp={day.temp} fells_like={day.feels_like}></DetailsListTemp>
             </Content>
+            </LinearGradient>
         </Container>
     )
 }
-
-const styles = StyleSheet.create({
-    content: {
+const back = StyleSheet.create({
+    background: {
         flex: 1,
-        paddingLeft: 24,
-        paddingRight: 24,
-    },
-    text: {
-        fontSize: 36,
-    },
-    container: {
-        alignItems: 'center',
-        padding: 80,
-    },
+      },
 })

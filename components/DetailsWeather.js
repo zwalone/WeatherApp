@@ -6,7 +6,7 @@ import DetailsWeatherItem from './DetailsWeatherItem'
 
 //Add details with icons name
 
-export default DetailsWeather = ({day}) => {
+export default DetailsWeather = ({day, styles}) => {
 
     const weekDay ={
         0: "Monday",
@@ -31,34 +31,24 @@ export default DetailsWeather = ({day}) => {
     } 
 
     return (
-        <View style={style.container}> 
+        <View style={styles.DetailsWeatherContainer}> 
             <Grid>
                 <Row >
-                    <DetailsWeatherItem name={"humidity"} value={day.humidity} icon={"water-outline"}/>
-                    <DetailsWeatherItem name={"sunrise"} value={getTime(day.sunrise)} icon={"weather-sunset-up"}/>
-                    <DetailsWeatherItem name={"sunset"} value={getTime(day.sunset)} icon={"weather-sunset-down"}/>
+                    <DetailsWeatherItem name={"humidity"} styles={styles} value={`${day.humidity} %`} icon={"water-outline"}/>
+                    <DetailsWeatherItem name={"sunrise"} styles={styles} value={getTime(day.sunrise)} icon={"weather-sunset-up"}/>
+                    <DetailsWeatherItem name={"sunset"} styles={styles} value={getTime(day.sunset)} icon={"weather-sunset-down"}/>
                 </Row>
                 <Row >
-                    <DetailsWeatherItem name={"pressure"} value={day.pressure} icon={"speedometer"}/>
-                    <DetailsWeatherItem name={"clouds"} value={day.clouds} icon={"weather-cloudy"}/>
-                    <DetailsWeatherItem name={"visibility"} value={day.visibility} icon={"eye"}/>
+                    <DetailsWeatherItem name={"pressure"} styles={styles} value={`${day.pressure}hPa`} icon={"speedometer"}/>
+                    <DetailsWeatherItem name={"clouds"} styles={styles} value={`${day.clouds}%`} icon={"weather-cloudy"}/>
+                    <DetailsWeatherItem name={"visibility"} styles={styles} value={`${day.visibility}m`} icon={"eye"}/>
                 </Row>
                 <Row >
-                    <DetailsWeatherItem name={"wind speed"} value={day.wind_speed} icon={"weather-windy"}/>
-                    <DetailsWeatherItem name={"wind deg"} value={day.wind_deg} icon={"axis-z-rotate-clockwise"}/>
-                    <DetailsWeatherItem name={"wind gust"} value={day.wind_gust} icon={"chevron-triple-up"}/>
+                    <DetailsWeatherItem name={"speed"} styles={styles} value={`${day.wind_speed}m/s`} icon={"weather-windy"}/>
+                    <DetailsWeatherItem name={"deg"} styles={styles} value={day.wind_deg} icon={"axis-z-rotate-clockwise"}/>
+                    <DetailsWeatherItem name={"gust"} styles={styles} value={`${day.wind_gust}m/s`} icon={"chevron-triple-up"}/>
                 </Row>
             </Grid>
         </View>
     )
 }
-
-const style = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-    },
-    col: {
-        height: '30%',
-        width: '30%',
-    }
-})
